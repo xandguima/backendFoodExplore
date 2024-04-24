@@ -18,10 +18,8 @@ const upload = multer(uploadConfig.MULTER);
 
 dishRoutes.post("/",dishController.create);
 dishRoutes.patch("/imgDish/:dish_id",upload.single("imgDish"),dishImgController.change)
-dishRoutes.put("/:dish_id",ensureAuthenticated,dishController.update)
-
-//userRoutes.delete("/",ensureAuthenticated,usersController.delete)
-
-//userRoutes.patch("/avatar",ensureAuthenticated,upload.single("avatar"),userAvatarController.update)
+dishRoutes.put("/:dish_id",dishController.update)
+dishRoutes.get("/:dish_id",dishController.show)
+dishRoutes.get("/",dishController.index);
 
 module.exports = dishRoutes

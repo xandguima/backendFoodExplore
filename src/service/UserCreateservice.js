@@ -1,6 +1,5 @@
 const{hash, compare}=require("bcryptjs");
 const AppError = require("../utils/AppError");
-const { use } = require("express/lib/router");
 class UserCreateService{
   constructor(UserRepository){
     this.userRepository = UserRepository;

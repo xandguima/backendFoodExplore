@@ -1,28 +1,18 @@
 const knex = require("../database/knex");
 const AppError = require("../utils/AppError");
 
+const DishRepository = require("../repositories/DishRepository");
+const DishService = require("../service/Dishservice");
+
+
 class DishController {
   async create(request, response) {
     const user_id = request.user.id
-    const { name, category, ingredients, price, description } = request.body;
+    const { name, category, price, description } = request.body;
 
-    const checkExistUser = await knex("users").where({ id: user_id }).first()
-
-    if (!checkExistUser) {
-      throw new AppError("Usuário não encontrado");
-    }
-
-    try {
-      await knex("dish").insert({
-        user_id,
-        name,
-        category,
-        price,
-        description
-      });
-    } catch (error) {
-      throw new AppError(error);
-    }
+    const dishRepository = new DishRepository();
+    const dishService = new DishService(dishRepository);
+    await dishService.create({name, category, price, description, user_id});
 
     return response.status(201).json();
   }

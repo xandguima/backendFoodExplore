@@ -5,7 +5,7 @@ const DiskStorage = require("../providers/DiskStorage");
 class DishImgController {
   async change(request, response) {
     const { dish_id } = request.params
-    const dishImg = request.file.filename;
+    const dishImg = request.file?.filename;
 
     const diskStorage = new DiskStorage()
 
@@ -14,14 +14,14 @@ class DishImgController {
     if (!dish) {
       throw new AppError("Prato não Cadastrado", 404)
     };
-    console.log(dish.imgDish);
+   
 
     if (dish.imgDish) {
       await diskStorage.deleteFile(dish.imgDish)
     }
     const filename = await diskStorage.saveFile(dishImg)
     dish.imgDish = filename
-    console.log(dish)
+   
     try {
       await knex("dish").where({ id: dish_id }).update(dish)
     }

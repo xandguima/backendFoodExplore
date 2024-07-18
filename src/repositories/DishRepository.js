@@ -27,8 +27,10 @@ class DishRepository {
     return dish_id;
   }
 
-  async updateDataBase({ dish_id, dish}){
-    await knex("dish").where({ id: dish_id }).update({ dish });
+  async updateDishDataBase({ dish_id, dish}){
+    dish.updated_at = knex.fn.now()
+    const updateDish = await knex("dish").where({ id: dish_id }).update(dish);
+    return updateDish;
   }
 }
 

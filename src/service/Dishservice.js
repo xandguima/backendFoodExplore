@@ -1,40 +1,34 @@
 const AppError = require("../utils/AppError");
-class DishService{
-  constructor(DishRepository){
+
+class DishService {
+  constructor(DishRepository) {
     this.dishRepository = DishRepository;
   }
-  async create({ user_id, name, category, price, description }){
-    
-    const checkExistUser= await this.dishRepository.findByUserId(user_id);
+  async create({ user_id, name, category, price, description }) {
 
-    if(!checkExistUser){
+    const checkExistUser = await this.dishRepository.findByUserId(user_id);
+
+    if (!checkExistUser) {
       throw new AppError("Usuário não encontrado");
     };
 
     const dishCreated = await this.dishRepository.addDataBase({ user_id, name, category, price, description });
-    
+
     return dishCreated;
   }
-  async update({ dish_id, name, category, price, description }){
+  async update({ dish_id, name, category, price, description }) {
+    const dish = await this.dishRepository.findByDishId(dish_id);
 
-    const dish= await this.dishRepository.findByDishId(dish_id);
-
-    if(!dish){
+    if (!dish) {
       throw new AppError("Prato não cadastrado");
     };
-    if (name) {
-      dish.name = name
-    }
-    if (category) {
-      dish.category = category
-    }
-    if (price) {
-      dish.price = price
-    }
-    if (description) {
-      dish.description = description
-    }
-  await this.dishRepository.updateDataBase({ dish_id, dish});
+    name && (dish.name = name);
+    category && (dish.category = category);
+    price && (dish.price = price);
+    description && (dish.description = description);
+
+    const dishUpdated = await this.dishRepository.updateDishDataBase({ dish_id, dish });
+    return dishUpdated;
 
   }
 }

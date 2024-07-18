@@ -4,8 +4,9 @@ const AppError = require("../utils/AppError");
 class IngredientsController {
   async add(request, response) {
     const user_id = request.user.id
-    const { dish_id } = request.params
+    const  {dish_id}  = request.params
     const {ingredients} = request.body;
+    console.log("ingredients", ingredients)
 
     const dish = await knex("dish").where({ id:dish_id }).first()
 
@@ -31,11 +32,10 @@ class IngredientsController {
   }
 
   async delete(request, response) {
-    const { ingredient_id } = request.params
+    const { dish_id } = request.params
+    await knex("ingredients").where({ dish_id }).delete();
 
-    await knex("ingredients").where({ id:ingredient_id }).delete();
-    
-    return response.status(200).json();
+    return response.status(204).json();
   }
 }
 module.exports = IngredientsController

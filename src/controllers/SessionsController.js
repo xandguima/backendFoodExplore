@@ -6,9 +6,13 @@ const AppError= require("../utils/AppError");
 
 class SessionsController {
   async create(request,response){
-    const {email, password}= request.body
+    const {email, password}= request.body;
+    
+    if(!email || !password){
+      throw new AppError("Preencher email e senha",401);
+    }
 
-    const user= await knex("users").where({email}).first()
+    const user = await knex("users").where({email}).first();
    
     if(!user){
       throw new AppError("Email e/ou senha incorreta",401);

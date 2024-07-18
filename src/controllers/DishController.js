@@ -20,28 +20,9 @@ class DishController {
   async update(request, response) {
     const { dish_id } = request.params
     const { name, category, price, description } = request.body;
-
-    const dish = await knex("dish").where({ id: dish_id }).first();
-
-    if (!dish) {
-      throw new AppError("Prato não cadastrado");
-    }
-
-    if (name) {
-      dish.name = name
-    }
-    if (category) {
-      dish.category = category
-    }
-    if (price) {
-      dish.price = price
-    }
-    if (description) {
-      dish.description = description
-    }
-
-
-    await knex("dish").where({ id: dish_id }).update(dish)
+    const dishRepository = new DishRepository();
+    const dishService = new DishService(dishRepository);
+    const dish = await dishService.update({ dish_id, name, category, price, description });
 
     return response.status(200).json({ dish });
 

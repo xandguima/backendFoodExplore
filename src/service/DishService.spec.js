@@ -1,20 +1,18 @@
 const DishService = require ("./Dishservice");
-const DishRepositoryInMemory = require("../repositories/DishRepositoryInMemory");
+const {DishRepositoryCreateInMemory,DishRepositoryUpdateInMemory} = require("../repositories/DishRepositoryInMemory");
 const AppError = require("../utils/AppError");
 
-
-describe("DishService- create", ()=>{
+describe("DishService - create", ()=>{
 
   let dishRepositoryInMemory =null;
   let dishService = null;
 
   beforeEach(()=>{
-    dishRepositoryInMemory = new DishRepositoryInMemory();
+    dishRepositoryInMemory = new DishRepositoryCreateInMemory();
     dishService = new DishService(dishRepositoryInMemory);
   });
 
-   
-  it("user not should be created",async()=>{
+  it("dish not should be created",async()=>{
     const dish= {
       user_id:2,
       name:"risoto",
@@ -34,21 +32,21 @@ describe("DishService - update ", ()=>{
   let dishService = null;
 
   beforeEach(()=>{
-    dishRepositoryInMemory = new DishRepositoryInMemory();
+    dishRepositoryInMemory = new DishRepositoryUpdateInMemory();
     dishService = new DishService(dishRepositoryInMemory);
   });
 
    
-  it("Dish not should be created",async()=>{
-    const dish= {
-      user_id:2,
+  it("Dish should be updated",async()=>{
+    const dish = {
+      dish_id:2,
       name:"risoto",
       category:"almoço",
       price:"56",
       description:"arroz e carne"
     };
-
-    await expect(dishService.create(dish)).rejects.toEqual(new AppError("Usuário não encontrado"));
-    
+    const updatedDish = await dishService.update(dish);
+    const { name, price, category, description } = dish;
+    expect(updatedDish).toMatchObject({ name, price, category, description });
   });
 });  

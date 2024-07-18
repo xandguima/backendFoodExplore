@@ -1,5 +1,5 @@
 const {Router}=require("express");
-
+const ensureAuthenticated=require("../middlewares/ensureAuthenticated")
 const UsersController=require("../controllers/UserController")
 
 
@@ -10,6 +10,7 @@ const userRoutes=Router();
 
 
 userRoutes.post("/",usersController.create)
+userRoutes.put("/role",ensureAuthenticated,usersController.updateRole)
 
 
 module.exports=userRoutes

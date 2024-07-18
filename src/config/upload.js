@@ -9,6 +9,7 @@ const MULTER = {
   storage: multer.diskStorage({
     destination: TMP_FOLDER,
     filename(request, file, callback) {
+      console.log("file  ",file)
       const fileHash = crypto.randomBytes(10).toString('hex');//garantiar que não irá haver nomes iguais de arquivos
       const fileName = `${fileHash}-${file.originalname}`;
 

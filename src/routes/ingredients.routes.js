@@ -11,7 +11,7 @@ ingredientRoutes.use(ensureAuthenticated);
 
 
 ingredientRoutes.post("/:dish_id",ingredientsController.add);
-ingredientRoutes.delete("/:ingredient_id",ingredientsController.delete)
+ingredientRoutes.delete("/:dish_id",ingredientsController.delete)
 
 
 module.exports = ingredientRoutes

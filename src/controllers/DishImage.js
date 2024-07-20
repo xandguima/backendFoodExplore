@@ -19,6 +19,7 @@ class DishImgController {
     if (dish.imgDish) {
       await diskStorage.deleteFile(dish.imgDish)
     }
+    
     const filename = await diskStorage.saveFile(dishImg)
     dish.imgDish = filename
    

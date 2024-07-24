@@ -12,9 +12,9 @@ class DishController {
 
     const dishRepository = new DishRepository();
     const dishService = new DishService(dishRepository);
-    await dishService.create({name, category, price, description, user_id});
+    const id =await dishService.create({name, category, price, description, user_id});
 
-    return response.status(201).json();
+    return response.status(201).json({ id });
   }
 
   async update(request, response) {

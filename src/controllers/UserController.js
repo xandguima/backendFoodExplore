@@ -18,8 +18,8 @@ class UsersController {
     return response.status(201).json();
   }
 
-  async updateRole(request, response) {
-    const { name, email, role } = request.body;
+  async updateRule(request, response) {
+    const { name, email, rule } = request.body;
     const user_id = request.user.id;
 
     const user = await knex("users").where({ id: user_id }).first()
@@ -30,13 +30,13 @@ class UsersController {
 
     user.name = name ?? user.name
     user.email = email ?? user.email
-    user.role = role ?? user.role
+    user.rule = rule ?? user.rule
 
 
     await knex("users").where({ id: user_id }).update({
       name: user.name,
       email: user.email,
-      role: user.role,
+      rule: user.rule,
       password: user.password,
       updated_at: knex.fn.now()
     })

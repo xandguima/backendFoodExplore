@@ -5,7 +5,7 @@ exports.up = knex=> knex.schema.createTable("users",table=>{
   table.text("password").notNullable()
 
   table
-    .enum("role",["user","admin"],{useNative: true, enumName: "roles"})
+    .enum("rule",["user","admin"],{useNative: true, enumName: "rules"})
     .notNullable().defaultTo("user")
 
   table.timestamp("created_at").default(knex.fn.now())

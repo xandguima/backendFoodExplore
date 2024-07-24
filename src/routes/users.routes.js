@@ -10,7 +10,7 @@ const userRoutes=Router();
 
 
 userRoutes.post("/",usersController.create)
-userRoutes.put("/role",ensureAuthenticated,usersController.updateRole)
+userRoutes.put("/rule",ensureAuthenticated,usersController.updateRule)
 
 
 module.exports=userRoutes

@@ -4,7 +4,7 @@ const uploadConfig=require("../config/upload")
 const ensureAuthenticated=require("../middlewares/ensureAuthenticated")
 
 const DishController = require("../controllers/DishController")
-const DishImgController=require("../controllers/DishImage")
+const DishImgController=require("../controllers/DishImageController")
 
 const dishController = new DishController()
 const dishImgController = new DishImgController();

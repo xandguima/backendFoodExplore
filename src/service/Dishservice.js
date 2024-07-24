@@ -12,9 +12,9 @@ class DishService {
       throw new AppError("Usuário não encontrado");
     };
 
-    const dishCreated = await this.dishRepository.addDataBase({ user_id, name, category, price, description });
+    const dish_id = await this.dishRepository.addDataBase({ user_id, name, category, price, description });
 
-    return dishCreated;
+    return dish_id;
   }
   async update({ dish_id, name, category, price, description }) {
     const dish = await this.dishRepository.findByDishId(dish_id);

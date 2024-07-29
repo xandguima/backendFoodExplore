@@ -1,4 +1,6 @@
-# API de Gerenciamento de Rotas
+# API do Food Explore
+
+Porjeto promovido pelo curso explore da RocketSeat. O desafio final.
 
 Esta é uma API de gerenciamento de rotas para a criação de usuários, pratos, ingredientes, likes e sessões. Desenvolvida com Node.js e JavaScript, a API permite a criação e o gerenciamento desses recursos.
 

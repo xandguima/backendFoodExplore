@@ -9,7 +9,7 @@ const userRoutes=Router();
 
 
 
-userRoutes.post("/",usersController.create)
+userRoutes.post("/",usersController.create);
 userRoutes.put("/rule",ensureAuthenticated,usersController.updateRule)
 
 

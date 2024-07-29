@@ -10,7 +10,7 @@ const likeController = new LikesController();
 likeRoutes.use(ensureAuthenticated);
 
 likeRoutes.post("/",likeController.add);
-likeRoutes.delete("/",likeController.delete);
+likeRoutes.delete("/:dish_id",likeController.delete);
 likeRoutes.get("/",likeController.index);
 
 

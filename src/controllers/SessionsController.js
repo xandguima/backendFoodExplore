@@ -46,7 +46,12 @@ class SessionsController {
   }
 
   async destroy(request,response){
-    response.clearCookie("token").status(200).json();
+    response.clearCookie("token", {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true
+    }).status(200).json();
+    
   }
 
 }

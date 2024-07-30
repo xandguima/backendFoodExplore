@@ -6,7 +6,6 @@ class IngredientsController {
     const user_id = request.user.id
     const  {dish_id}  = request.params
     const {ingredients} = request.body;
-    console.log("ingredients", ingredients)
 
     const dish = await knex("dish").where({ id:dish_id }).first()
 

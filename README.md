@@ -1,6 +1,6 @@
 # API do Food Explore
 
-Porjeto promovido pelo curso explore da RocketSeat. O desafio final.
+Projeto promovido pelo curso Explore da RocketSeat. O desafio final.
 
 Esta é uma API de gerenciamento de rotas para a criação de usuários, pratos, ingredientes, likes e sessões. Desenvolvida com Node.js e JavaScript, a API permite a criação e o gerenciamento desses recursos.
 
@@ -8,6 +8,7 @@ Esta é uma API de gerenciamento de rotas para a criação de usuários, pratos,
 
 - Node.js (v14 ou superior)
 - npm (gerenciador de pacotes Node)
+- Knex.js (instalado como dependência do projeto)
 
 ## Instalação
 
@@ -29,13 +30,23 @@ Esta é uma API de gerenciamento de rotas para a criação de usuários, pratos,
     npm install
     ```
 
+## Configuração do Banco de Dados
+
+1. Configure o banco de dados no arquivo `knexfile.js` com as credenciais apropriadas.
+
+2. Execute as migrações para criar as tabelas no banco de dados:
+
+    ```bash
+    npx knex migrate:latest
+    ```
+
 ## Uso
 
 Para iniciar a API, use o comando:
 
-  ```bash
-  npm start
-  ```
+    ```bash
+    npm start
+    ```
 
 A API estará disponível em `http://localhost:3333`.
 
@@ -73,7 +84,7 @@ A API estará disponível em `http://localhost:3333`.
 
     ```json
     {
-      "id": "id-do-prato",
+      "id": "id-do-prato"
     }
     ```
 

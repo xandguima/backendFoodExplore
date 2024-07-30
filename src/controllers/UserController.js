@@ -10,7 +10,6 @@ class UsersController {
       throw new AppError("Preencher nome, email e senha");
     }
 
-
     const userRepository = new UserRepository();
     const userCreateService = new UserCreateService(userRepository);
     await userCreateService.execute({ name, email, password });

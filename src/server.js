@@ -11,20 +11,13 @@ const app = express();
 
 // Middleware global para CORS
 app.use(cors({
-  origin: ['https://foodexplorerocketseat.netlify.app', 'http://localhost:5173', 'http://127.0.0.1:5173'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  origin: 'https://foodexplorerocketseat.netlify.app',
   credentials: true
 }));
 
 app.use(express.json());
 app.use(cookieParser());
 
-// Middleware de CORS para opções
-app.options('*', cors({
-  origin: ['https://foodexplorerocketseat.netlify.app', 'http://localhost:5173', 'http://127.0.0.1:5173'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true
-}));
 
 const routes = require("./routes");
 app.use(routes);

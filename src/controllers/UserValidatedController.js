@@ -4,7 +4,6 @@ const AppError = require("../utils/AppError");
 class UserValidatedController {
   async index(request, response) {
     const { user }= request
-    console.log("user ",user)
     if(!user){
       throw new AppError("user not found",401);
     }

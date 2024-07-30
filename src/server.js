@@ -1,15 +1,23 @@
 require("express-async-errors");
 require("dotenv/config")
 
-
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const express =require("express");
 const AppError=require("./utils/AppError");
 const uploadConfig=require("./config/upload");
 
 const app = express();
-app.use(cors())
 app.use(express.json());
+app.use(cookieParser());
+
+app.use(cors(
+  {
+    origin: ['http://localhost:5173',"http://127.0.0.1:5173/"],
+    credentials: true
+  }
+))
+
 
 const routes=require("./routes");
 app.use(routes);

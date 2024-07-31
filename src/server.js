@@ -11,7 +11,7 @@ const app = express();
 
 // Middleware global para CORS
 app.use(cors({
-  origin: 'https://foodexplorerocketseat.netlify.app/',
+  origin: 'https://foodexplorerocketseat.netlify.app',
   credentials: true
 }));
 

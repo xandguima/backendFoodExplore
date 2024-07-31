@@ -133,6 +133,7 @@ A API estará disponível em `http://localhost:3333`.
     }
     ```
 
-## Licença
+## Deploy
 
-Este projeto está licenciado sob a [MIT License](LICENSE).
+A API está disponível em [FoodExplorer Backend](https://backendfoodexplore.onrender.com/).
+
